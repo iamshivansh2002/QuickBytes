@@ -84,7 +84,6 @@ QuickBytes/
 1. **Clone the repo**
    ```bash
    git clone https://github.com/iamshivansh2002/QuickBytes.git
-   cd QuickBytes
 
  2. **Install dependencies**
     ```bash
@@ -94,6 +93,7 @@ QuickBytes/
     ```bash
     npm start
 
-  4.Open the app
-    http://localhost:3000 in your browser.
+ 
+   4.Open the app
+In your browser, go to 👉 http://localhost:3000
 
