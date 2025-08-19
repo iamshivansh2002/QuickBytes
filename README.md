@@ -27,30 +27,35 @@
 ---
 
 ## 🗂 Project Structure 
-
-* [components](./components)
-  * [Header.js](./components/Header.js)
-  * [Footer.js](./components/Footer.js)
-  * [Body.js](./components/Body.js)
-  * [About.js](./components/About.js)
-  * [Contact.js](./components/Contact.js)
-  * [Error.js](./components/Error.js)
-  * [Login.js](./components/Login.js)
-  * [Cart.js](./components/Cart.js)
-  * [CartItem.js](./components/CartItem.js)
-  * [RestaurantCard.js](./components/RestaurantCard.js)
-  * [RestaurantMenu.js](./components/RestaurantMenu.js)
-  * [Shimmer.js](./components/Shimmer.js)
-  * [ShimmerMenu.js](./components/ShimmerMenu.js)
-* [utils](./utils)
-  * [store.js](./utils/store.js)
-  * [cartSlice.js](./utils/cartSlice.js)
-  * [useOnline.js](./utils/useOnline.js)
-  * [useRestaurantMenu.js](./utils/useRestaurantMenu.js)
-  * [mockData.js](./utils/mockData.js)
-* [App.js](./App.js)
-* [index.js](./index.js)
-* [index.css](./index.css)
+```bash
+QuickBytes/
+│
+├─ components/       # All React UI components
+│   ├─ Header.js
+│   ├─ Footer.js
+│   ├─ Body.js
+│   ├─ About.js
+│   ├─ Contact.js
+│   ├─ Error.js
+│   ├─ Login.js
+│   ├─ Cart.js
+│   ├─ CartItem.js
+│   ├─ RestaurantCard.js
+│   ├─ RestaurantMenu.js
+│   ├─ Shimmer.js
+│   └─ ShimmerMenu.js
+│
+├─ utils/            # Redux store, hooks, mock data
+│   ├─ store.js
+│   ├─ cartSlice.js
+│   ├─ useOnline.js
+│   ├─ useRestaurantMenu.js
+│   └─ mockData.js
+│
+├─ App.js
+├─ index.js
+└─ index.css
+```
 
 
 ---
@@ -76,14 +81,19 @@
 
 ## 💻 Getting Started
 
-1.Clone the repo:
-git clone https://github.com/iamshivansh2002/QuickBytes.git
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/iamshivansh2002/QuickBytes.git
+   cd QuickBytes
 
-2.Install dependencies:
-npm install
+ 2. **Install dependencies**
+    ```bash
+    npm install
 
-3.Run the app:
-npm start
+ 3. **Run the app**
+    ```bash
+    npm start
 
-4.Open http://localhost:3000 in your browser.
+  4.Open the app
+    http://localhost:3000 in your browser.
 
