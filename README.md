@@ -3,6 +3,13 @@
 **QuickBytes** is a modern food delivery app built with React, Redux, and React Router. Users can browse restaurants, view menus, add items to a cart, and place orders. The app supports offline detection, user authentication, and dynamic restaurant menus.  
 
 ---
+## 🚀 Demo
+
+Here is a quick look at QuickByte in action:
+
+![Demo of QuickByte](Demo-QuickByte.gif)
+
+---
 
 ## 🚀 Features
 
