@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider, Navigate, useOutletContext } from 'react-router-dom';
 import RestaurantMenu from './components/RestaurantMenu';
 import Login from './components/Login';
 import '../index.css';
@@ -16,9 +16,19 @@ import Cart from './components/Cart';
 
 
 
+// Gate: only render the page if the user is logged in, otherwise send to /login
+const ProtectedRoute = ({ children }) => {
+  const { isLoggedIn } = useOutletContext();
+  if (!isLoggedIn) return <Navigate to="/login" replace />;
+  return children;
+};
+
 const AppLayout = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [email, setEmail] = useState('');
+  // Read persisted auth so a page refresh keeps the user logged in
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    () => localStorage.getItem('isLoggedIn') === 'true'
+  );
+  const [email, setEmail] = useState(() => localStorage.getItem('email') || '');
 
   return (
     <Provider store={store}>
@@ -26,10 +36,11 @@ const AppLayout = () => {
         <Header
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}
+          setEmail={setEmail}
           email={email}
         />
         <div className="page-content">
-          <Outlet context={{ setIsLoggedIn, setEmail }} />
+          <Outlet context={{ isLoggedIn, setIsLoggedIn, setEmail }} />
         </div>
         <Footer />
       </div>
@@ -43,13 +54,12 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <Error />,
     children: [
-      { path: '/', element: <Body /> },
-      { path: '/about', element: <About /> },
-      { path: '/contact', element: <Contact /> },
-
-      { path: '/restaurant/:resId', element: <RestaurantMenu /> },
+      { path: '/', element: <ProtectedRoute><Body /></ProtectedRoute> },
+      { path: '/about', element: <ProtectedRoute><About /></ProtectedRoute> },
+      { path: '/contact', element: <ProtectedRoute><Contact /></ProtectedRoute> },
+      { path: '/restaurant/:resId', element: <ProtectedRoute><RestaurantMenu /></ProtectedRoute> },
+      { path: '/cart', element: <ProtectedRoute><Cart /></ProtectedRoute> },
       { path: '/login', element: <Login /> },
-         { path: '/cart', element: <Cart /> },
     ],
   },
 ]);

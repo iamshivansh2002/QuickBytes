@@ -2,12 +2,16 @@ import { useNavigate } from 'react-router-dom';
 import useOnline from '../utils/useOnline';
 import { useSelector } from 'react-redux';
 
-const Header = ({ isLoggedIn, setIsLoggedIn, email }) => {
+const Header = ({ isLoggedIn, setIsLoggedIn, setEmail, email }) => {
   const isOnline = useOnline();
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('email');
     setIsLoggedIn(false);
+    setEmail('');
+    navigate('/login');
   };
 
   const cartItems = useSelector((store) => store.cart.items);
